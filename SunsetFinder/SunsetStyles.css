@@ -1,0 +1,83 @@
+/* sets the background image and color, and adjusts the size and repetition of the background image */
+body {
+    background-image: url("Images/pagebg.jpg");
+    background-color: #e8e8b9;
+    background-repeat: no-repeat;
+    background-size: 1500px 800px;
+}
+
+/* centers and stylizes h1 headings */
+h1 {
+    text-align: center;
+    text-shadow: 3px 3px 5px #fff;
+    font-family: Georgia, serif;
+    font-size: xxx-large;
+}
+
+/* adds a border, padding, and sets the width of images */
+img {
+    border: 5px solid #030303;
+    padding: 0px;
+    width: 500px;
+    height: 350px;
+}
+
+/* adds a box-shadow effect to images when hovering over them */
+img:hover {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  }
+  
+
+/* applies the box-sizing property to all elements */
+*{
+    box-sizing: border-box;
+}
+
+/* centers an element within its container */
+.center {
+  display: flex;
+  justify-content: center;
+   
+}
+  
+.center img {
+  margin: 15px;
+}
+
+  /* About Section */
+.about {
+    background-color: #e8e8b9;
+    padding: 10px;
+    text-align: center;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+}
+  
+.about h2 {
+    margin-bottom: 5px;
+}
+  
+.about p {
+    font-size: 18px;
+    line-height: 1.5;
+    margin: 0 auto;
+    max-width: 800px;
+}
+
+
+  
+  
+  
+  
+  
+  
+  
+
+
+
+
+
+
+
