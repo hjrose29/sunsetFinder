@@ -3,7 +3,7 @@ body {
     background-image: url("Images/pagebg.jpg");
     background-color: #e2837d;
     background-repeat: no-repeat;
-    background-size: 1500px 850px;
+    background-size: cover;
 }
 
 /* centers and stylizes heading */
