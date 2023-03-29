@@ -1,70 +1,113 @@
 /* sets the background image and color, and adjusts the size and repetition of the background image */
 body {
     background-image: url("Images/pagebg.jpg");
-    background-color: #e8e8b9;
+    background-color: #e2837d;
     background-repeat: no-repeat;
-    background-size: 1500px 800px;
+    background-size: 1500px 850px;
 }
 
-/* centers and stylizes h1 headings */
-h1 {
-    text-align: center;
-    text-shadow: 3px 3px 5px #fff;
+/* centers and stylizes heading */
+.headWords {
+    text-align: right;
+    color: #e2837d;
+    text-shadow: 3px 3px 5px white;
+    margin-left: 5px;
     font-family: Georgia, serif;
-    font-size: xxx-large;
+    font-size: xx-large;
+    width: 950px; 
+    word-wrap: normal;
 }
-
-/* adds a border, padding, and sets the width of images */
-img {
-    border: 5px solid #030303;
-    padding: 0px;
-    width: 500px;
-    height: 350px;
-}
-
-/* adds a box-shadow effect to images when hovering over them */
-img:hover {
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-  }
+.headWords:hover {
   
+  color: white;
+  text-shadow: 3px 3px 5px #e2837d;
 
-/* applies the box-sizing property to all elements */
-*{
-    box-sizing: border-box;
 }
+
+iframe{
+  height: 250px;
+  width: 400px;
+  border:5px solid white;
+  
+}
+
+iframe:hover {
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
+}
+
+.videos {
+  display:flex;
+  justify-content:center;
+  flex-flow:row wrap;
+  list-style:none;
+  margin:0;
+  padding:0;
+  
+}
+.videos li {
+  margin:8px;
+  display:flex;
+  flex-flow:column;
+  align-items:center;
+  color: white;
+}
+
+/* Div classes holding both rows of embedded videos*/
+/*
+.topRow{
+  width: 60%;
+  margin:auto;
+
+}
+.bottomRow{
+  width: 60%;
+  margin: auto;
+  margin-top: 5px;
+}
+*/
 
 /* centers an element within its container */
-.center {
-  display: flex;
-  justify-content: center;
-   
-}
-  
-.center img {
-  margin: 15px;
+
+.chiveButton{
+  position: fixed;
+  top: 10px;
+  right: 200px;
+  padding: 10px;
+  background-color: #e2837d;
+  color: #fff;
+  border: 1px solid white;
+  border-radius: 5px;
 }
 
-  /* About Section */
-.about {
-    background-color: #e8e8b9;
-    padding: 10px;
-    text-align: center;
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
+.streamButton{
+  position: fixed;
+  top: 10px;
+  right: 100px;
+  padding: 10px;
+  background-color: #e2837d;
+  color: #fff;
+  border: 1px solid white;
+  border-radius: 5px;
 }
-  
-.about h2 {
-    margin-bottom: 5px;
+
+.boutusButton {
+  position: fixed;
+  top: 10px;
+  right: 10px;
+  padding: 10px;
+  background-color: #e2837d;
+  color: #fff;
+  border: 1px solid white;
+  border-radius: 5px;
 }
-  
-.about p {
-    font-size: 18px;
-    line-height: 1.5;
-    margin: 0 auto;
-    max-width: 800px;
+
+button:hover {
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  background-color:white;
+  color: #e2837d
 }
+
+
 
 
   
