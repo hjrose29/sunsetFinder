@@ -71,17 +71,6 @@ iframe:hover {
 .chiveButton{
   position: fixed;
   top: 10px;
-  right: 200px;
-  padding: 10px;
-  background-color: #e2837d;
-  color: #fff;
-  border: 1px solid white;
-  border-radius: 5px;
-}
-
-.streamButton{
-  position: fixed;
-  top: 10px;
   right: 100px;
   padding: 10px;
   background-color: #e2837d;
@@ -89,6 +78,7 @@ iframe:hover {
   border: 1px solid white;
   border-radius: 5px;
 }
+
 
 .boutusButton {
   position: fixed;

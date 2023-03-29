@@ -86,10 +86,20 @@
             border-radius: 5px;
         }
 
-        .indexButton:hover{
-            box-shadow: 0 0 30px #555;
+        .chiveButton{
+            position: fixed;
+            top: 10px;
+            left: 80px;
+            padding: 10px;
+            background-color: #fff;
+            color: #e2837d;
+            border: 1px solid black;
+            border-radius: 5px;
         }
         
+        .pageButtons button:hover{
+            box-shadow: 0 0 30px #555;
+        }
         
         @media screen and (max-width: 650px) {
             .column {
@@ -158,9 +168,13 @@
         </div>
     </div>
 
-    <a href="index.html">
-        <button class="indexButton"> Home</button>
-      </a>
+    <div class = "pageButtons">
+        <a href="index.html">
+            <button class="indexButton"> Home</button>
+        </a>
 
-      
+        <a href="=">
+            <button class="chiveButton">Archive</button>
+        </a>
+    </div>
 </html>
