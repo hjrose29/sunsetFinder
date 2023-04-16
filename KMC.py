@@ -10,41 +10,46 @@ import os
 import shutil
 
 
-# Function to Extract features from the images
-def image_feature(direc):
+# function to extract features from the images
+def image_feature(directory):
     model = InceptionV3(weights='imagenet', include_top=False)
     features = []
     img_name = []
-    for i in tqdm(direc):
-        fname = 'TestPictures' + '/' + i
-        img = image.load_img(fname, target_size=(224, 224))
-        x = img_to_array(img)
+    # loop over images and extract their features
+    for i in tqdm(directory):
+        file_name = 'TestPictures' + '/' + i
+        picture = image.load_img(file_name, target_size=(256, 256))  # resizes image to 256x256
+        x = img_to_array(picture)
         x = np.expand_dims(x, axis=0)
         x = preprocess_input(x)
-        feat = model.predict(x)
+        feat = model.predict(x)  # extract features
         feat = feat.flatten()
-        features.append(feat)
-        img_name.append(i)
+        features.append(feat)   # adds the features to a list
+        img_name.append(i)  # appends the file name to its features
     return features, img_name
 
 
-img_path = os.listdir('TestPictures')
-img_features, img_name = image_feature(img_path)
+folder_path = os.listdir('TestPictures')
+image_features, image_name = image_feature(folder_path)
 
 
-# Creating Clusters
-k = 2
+# cluster the images with kmeans
+k = 2   # number of clusters
 clusters = KMeans(k, random_state=40, n_init=10)
-clusters.fit(img_features)
+clusters.fit(image_features)
 
-image_cluster = pd.DataFrame(img_name, columns=['image'])
-image_cluster["clusterid"] = clusters.labels_
+# data frame for file names with their cluster ids
+image_cluster = pd.DataFrame(image_name, columns=['image'])
+image_cluster["cluster_id"] = clusters.labels_
 
-# Made folder to separate images
-os.mkdir('sunset')
-os.mkdir('not_sunset')
-for i in range(len(image_cluster)):
-    if image_cluster['clusterid'][i] == 0:
-        shutil.move(os.path.join('TestPictures', image_cluster['image'][i]), 'sunset')
+# check if the directories exist
+if not os.path.exists('sunset'):
+    os.mkdir('sunset')
+if not os.path.exists('not_sunset'):
+    os.mkdir('not_sunset')
+# add picture to respective directory based on their cluster id
+for j in range(len(image_cluster)):
+    if image_cluster['cluster_id'][j] == 0:
+        shutil.move(os.path.join('TestPictures', image_cluster['image'][j]), 'not_sunset')
     else:
-        shutil.move(os.path.join('TestPictures', image_cluster['image'][i]), 'not_sunset')
+        shutil.move(os.path.join('TestPictures', image_cluster['image'][j]), 'sunset')
