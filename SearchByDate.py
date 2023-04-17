@@ -1,7 +1,7 @@
 import os
 from datetime import datetime
 
-filepath = "C:/Users/trist/PycharmProjects/SunsetFinder/sunset"
+filepath = "/Users/tristanallen/PycharmProjects/SunsetFinder/sunset"
 
 
 # search for the input date, or find the closest date
@@ -11,7 +11,7 @@ def search(date):
     matches = []
     input_date_object = datetime.strptime(formatted_date, '%Y%m%d')
     for filename in os.listdir(filepath):
-        formatted_file = filename.split('-')[0]
+        formatted_file = format_file(filename)
         file_date_object = datetime.strptime(formatted_file, '%Y%m%d')
         if date == formatted_file:
             matches.append(filename)
@@ -21,9 +21,13 @@ def search(date):
     if matches:
         return matches
     elif closest_date is not None:
-        return closest_filename
+        return search(format_file(closest_filename))
     else:
         return None
+
+
+def format_file(file):
+    return file.split('-')[0]
 
 
 # take input and format to YYYYMMDD
