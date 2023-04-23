@@ -1,0 +1,26 @@
+<html>
+<body>
+
+    <ul class="videos">
+
+      {% for i in imageList %}
+        <li>
+          <iframe width="1000" height="1000" src="data:image/jpeg;base64,{{ i }}" title="Shineman Center Livestream" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+        </li>
+      {% endfor %}
+    </ul>
+
+      <!--Buttons-->
+      
+  
+      <a href="/">
+          <button class="chiveButton">Live Stream</button>
+        </a>
+    
+        <a href="aboutUs.html">
+          <button class="boutusButton"> About Us</button>
+        </a>
+      
+    </body>
+</html>
+  
