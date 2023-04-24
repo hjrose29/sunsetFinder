@@ -1,4 +1,3 @@
-
 from PIL import Image
 import base64
 from io import BytesIO
@@ -25,13 +24,13 @@ def file_to_base64(file_path):
 
 
 
-def update_json(image_name):
+def update_json(image_name, date):
     # Load the JSON file
     with open("/Users/henry/Documents/sunsetFinder/app/archive.json", 'r') as f:
         data = json.load(f)
 
     # Parse the date string into a datetime object
-    date_taken = str(datetime.date(2012,10,2))
+    date_taken = date
 
     # Create a new object with the image name and date
     new_object = {'image_name': image_name, 'date_taken': date_taken}

@@ -1,19 +1,37 @@
 <html>
 <body>
 
-    <ul class="videos">
 
-      {% for i in imageList %}
-        <li>
-          <iframe width="1000" height="1000" src="data:image/jpeg;base64,{{ i }}" title="Shineman Center Livestream" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-        </li>
+  <div class="row" textalign="center"> 
+    <div class="column">
+      {% for i in c0 %}        
+          <img src="data:image/jpeg;base64,{{ i }}">
       {% endfor %}
-    </ul>
+    </div>
+    <div class="column">
+      {% for i in c1 %}        
+          <img src="data:image/jpeg;base64,{{ i }}">
+      {% endfor %}
+    </div> 
+    <div class="column">
+      {% for i in c2 %}        
+          <img src="data:image/jpeg;base64,{{ i }}">
+      {% endfor %}
+    </div>
+    <div class="column">
+      {% for i in c3 %}        
+          <img src="data:image/jpeg;base64,{{ i }}">
+      {% endfor %}
+    </div>
+  </div>
+  
+      
+    
 
       <!--Buttons-->
       
   
-      <a href="/">
+      <a href="index.html">
           <button class="chiveButton">Live Stream</button>
         </a>
     
