@@ -2,7 +2,7 @@ from keras.applications.inception_v3 import InceptionV3
 from keras.applications.inception_v3 import preprocess_input
 import keras.utils as image
 from keras.utils import img_to_array
-from sklearn.cluster import KMeans
+import sklearn
 import pandas as pd
 import numpy as np
 from tqdm import tqdm
