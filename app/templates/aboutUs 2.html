@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>About Us</title>
+        <meta charset="UTF-8">
+        <meta name="author" content="Sunset Finder Team">
+        <meta name="description" content="This page is about the members of our team">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      </head>
+      <body>
+
+
+
+
+    <style>
+        body {
+            font-family: Georgia, sans-serif;
+            margin: 0;
+        }
+        
+        html {
+            box-sizing: border-box;
+        }
+        
+        *, *:before, *:after {
+            box-sizing: inherit;
+        }
+        
+        .column {
+            float: left;
+            width: 25%;
+            margin-bottom: 16px;
+            padding: 0 8px;
+        }
+        
+        .card {
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+            margin: 8px;
+        }
+        
+        .about-section {
+            padding: 50px;
+            text-align: center;
+            background-color: #e2837d;
+            color: white;
+        }
+        
+        .container {
+            padding: 0 16px;
+        }
+        
+        .container::after, .row::after {
+            content: "";
+            clear: both;
+            display: table;
+        }
+        
+        .title {
+            color: grey;
+        }
+        
+        .button {
+            border: none;
+            outline: 0;
+            display: inline-block;
+            padding: 8px;
+            color: white;
+            background-color: #000;
+            text-align: center;
+            cursor: pointer;
+            width: 100%;
+        }
+        
+        .button:hover {
+            background-color: #555;
+        }
+
+        .indexButton {
+            position: fixed;
+            top: 10px;
+            left: 10px;
+            padding: 10px;
+            background-color: #fff;
+            color: #e2837d;
+            border: 1px solid black;
+            border-radius: 5px;
+        }
+
+        .chiveButton{
+            position: fixed;
+            top: 10px;
+            left: 80px;
+            padding: 10px;
+            background-color: #fff;
+            color: #e2837d;
+            border: 1px solid black;
+            border-radius: 5px;
+        }
+        
+        .pageButtons button:hover{
+            box-shadow: 0 0 30px #555;
+        }
+        
+        @media screen and (max-width: 650px) {
+            .column {
+            width: 100%;
+            display: block;
+            }
+        }
+    </style>
+
+    <div class="about-section">
+        <h1>About Us</h1>
+        <p>We are students at SUNY Oswego and this is our project for our Csc380 with prof. Bastian Tenbergen</p>
+        <p> Our project is Sunset Finder and it is an application that allows your webcams to detect when there is a sunset and saves the image to an archive when you can go back and look at them. </p>
+    </div>
+    
+    <h2 style="text-align:center">Our Team</h2>
+    <div class="row">
+        <div class="column">
+        <div class="card">
+            <div class="container">
+            <h2>Henry Rose</h2>
+            <a target="_blank" class="title" href="https://www.linkedin.com/in/hjrose29/"> LinkedIn</a>
+            <br><br>
+            <a target="_blank" class="title" href="https://hjrose29.github.io/"> Github</a>
+            <p>Type a short bio here...</p>
+            <a href="mailto:hrose3@oswego.edu"><p> <button class="button">Email</button></p> </a>
+            </div>
+        </div>
+        </div>
+    
+        <div class="column">
+        <div class="card">
+            <div class="container">
+            <h2>Mark Thompson </h2>
+            <a target="_blank" class="title" href="https://www.linkedin.com/in/mark-thompson-8124071b5/"> LinkedIn</a>
+            <br><br>
+            <a target="_blank" class="title" href="https://github.com/mthomps9802?tab=repositories"> Github</a>
+            <p>Type a short bio here... </p>
+            <a href="mailto:mthomps4@oswego.edu"><p> <button class="button">Email</button></p> </a>
+            </div>
+        </div>
+        </div>
+    
+        <div class="column">
+        <div class="card">
+            <div class="container">
+            <h2>Tristan Allen</h2>
+            <a target="_blank" class="title" href="#"> LinkedIn </a>
+            <br><br>
+            <p>Type a short bio here...</p>
+            <a href="mailto:tallen6@oswego.edu"><p> <button class="button">Email</button></p> </a>
+            </div>
+        </div>
+        </div>
+        
+        <div class="column">
+        <div class="card">
+            <div class="container">
+            <h2>Dennis Molina</h2>
+            <a target="_blank" class="title" href="#"> LinkedIn </a>
+            <br><br>
+            <p>Type a short bio here...</p>
+            <a href="mailto:dmolina2@oswego.edu"><p> <button class="button">Email</button></p> </a>
+            </div>
+        </div>
+        </div>
+    </div>
+
+    <div class = "pageButtons">
+        <a href="index.html">
+            <button class="indexButton"> Home</button>
+        </a>
+
+        <a href="archive.html">
+            <button class="chiveButton">Archive</button>
+        </a>
+    </div>
+</html>
