@@ -28,6 +28,7 @@ def search(date):
     if matches:
         return matches
     elif closest_date is not None:
+        closest_date = closest_date.strftime('%Y-%m-%d')
         return search(closest_date)  # search again on the closest date found
     else:
         return None
@@ -45,4 +46,4 @@ try:
     else:
         print("No file found for: " + input_date)
 except ValueError:
-    print(input_date + " is not a valid input. Enter a date MM/DD/YYYY")
+    print("\"" + input_date + "\" is not a valid input. Enter a date MM/DD/YYYY")
