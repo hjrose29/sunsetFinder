@@ -69,7 +69,19 @@ iframe:hover {
   color: white;
 }
 
+/* Div classes holding both rows of embedded videos*/
+/*
+.topRow{
+  width: 60%;
+  margin:auto;
 
+}
+.bottomRow{
+  width: 60%;
+  margin: auto;
+  margin-top: 5px;
+}
+*/
 
 /* centers an element within its container */
 
