@@ -1,194 +1,89 @@
-# import tflearn
-# from tflearn.layers.conv import conv_2d, max_pool_2d
-# from tflearn.layers.core import input_data, dropout, fully_connected
-# from tflearn.layers.estimator import regression
-# import tflearn.datasets.mnist as mnist
-
-
-# # # plot dog photos from the dogs vs cats dataset
-# # from matplotlib import pyplot
-# # from matplotlib.image import imread
-# # # define location of dataset
-# # folder = 'Data/'
-# # sunsetPath = folder + "Sunsets/"
-# # # plot first few images
-# # count = 0
-
-# # for i in os.listdir(sunsetPath):
-# #     print(i)
-# # for i in os.listdir(folder + "Sunsets"):
-# #         if(i != ".DS_Store"):
-# #                 count += 1
-# #                 # define subplot
-# #                 pyplot.subplot(10,10, count)
-# #                 # define filename
-# #                 filename = sunsetPath + i
-# #                 # load image pixels
-# #                 image = imread(filename)
-# #                 # plot raw pixel data
-# #                 pyplot.imshow(image)
-# # show the figure
-# # pyplot.show()
-
-
-# # seed(1)
-# # val_ratio = 0.25
-# # #Split data 75-25, run for Sunsets and Non-Sunsets
-# # src_directory = 'toSplit/Sunsets'
-# # for file in listdir(src_directory):
-# #         src = src_directory + '/' + file
-# #         dst_dir = 'Data/train/Sunsets'
-# #         if random() < val_ratio:dst_dir = 'Data/test/Sunsets'
-# #         dst = dst_dir + "/" + file
-# #         copyfile(src, dst)
-
-
-# #Develop baseline cnn
-
-# # baseline model for the dogs vs cats dataset
-
-
-# import numpy as np
-# import tensorflow as tf
-# from tensorflow import keras
-# from tensorflow.keras import layers
-# from tensorflow.keras.preprocessing.image import ImageDataGenerator
-# train_generator = train_datagen.flow_from_directory(
-#     r'/Users/henry/Documents/sunsetFinder/Data/train',
-#     target_size=(300, 300),
-#     batch_size=128,
-#     class_mode='binary'
-# )
-
-# model = tf.keras.models.Sequential([
-#     #Note the input shape is the size of the image 300x300 with 3 bytes color
-    
-#     tf.keras.layers.Conv2D(16, (3,3), activation='relu', input_shape=(300, 300, 3)),
-#     tf.keras.layers.MaxPooling2D(2, 2),
-    
-#     tf.keras.layers.Conv2D(32, (3,3), activation='relu'),
-#     tf.keras.layers.MaxPooling2D(2,2),
-       
-#     tf.keras.layers.Conv2D(64, (3,3), activation='relu'),
-#     tf.keras.layers.MaxPooling2D(2,2),
-    
-#     tf.keras.layers.Conv2D(64, (3,3), activation='relu'),
-#     tf.keras.layers.MaxPooling2D(2,2),
-    
-#     tf.keras.layers.Conv2D(64, (3,3), activation='relu'),
-#     tf.keras.layers.MaxPooling2D(2,2),
-    
-#     # Flatten the results to feed into a DNN
-#     tf.keras.layers.Flatten(),
-    
-#     tf.keras.layers.Dense(512, activation='relu'),
-#     tf.keras.layers.Dense(512, activation='relu'),
-    
-#     tf.keras.layers.Dense(1, activation='sigmoid')
-# ])
-
-# from tensorflow.keras.optimizers import RMSprop
-
-# model.compile(loss="binary_crossentropy",
-#              optimizer=RMSprop(learning_rate=0.0001),
-#              metrics=['accuracy'])
-
-
-# history = model.fit(
-#     train_generator,
-#     steps_per_epoch=8,
-#     epochs=15,
-#     verbose=1,
-#     validation_data = validation_generator,
-#     validation_steps = 8
-# )
-
-
-# import matplotlib.pyplot as plt
-# plt.plot(history.history['accuracy'])
-# plt.plot(history.history['val_accuracy'])
-# plt.title('Model Accuracies')
-# plt.ylabel('Accuracy')
-# plt.xlabel('Epoch')
-# plt.legend(['train', 'test'], loc='best')
-# plt.show()
-import os
-import tflearn
-from tflearn.layers.conv import conv_2d, max_pool_2d
-from tflearn.layers.core import input_data, dropout, fully_connected
-from tflearn.layers.estimator import regression
-import tflearn.datasets.mnist as mnist
-from PIL import Image
-import base64
-
-with open("/Users/henry/Documents/sunsetFinder/Data/test/Sunsets" + "/" + "20210206-1720.jpg", "rb") as image2string:
-        testImage = base64.b64encode(image2string.read())
-
-
-X = []
-Y = []
-
-for i in os.listdir("/Users/henry/Documents/sunsetFinder/Data/train/Non-Sunsets"):
-    if(i == ".DS_Store"):
-        continue
-
-    
-    with open("/Users/henry/Documents/sunsetFinder/Data/train/Non-Sunsets" + "/" + i, "rb") as image2string:
-        converted_string = base64.b64encode(image2string.read())
-    X.append(converted_string)
-    Y.append("Non-Sunset")
-
-for i in os.listdir("/Users/henry/Documents/sunsetFinder/Data/train/Sunsets"):
-    if(i == ".DS_Store"):
-        continue
-
-    with open("/Users/henry/Documents/sunsetFinder/Data/train/Sunsets" + "/" + i, "rb") as image2string:
-        converted_string = base64.b64encode(image2string.read())
-    X.append(converted_string)
-    Y.append("Sunset")
-
-
-test_x = []
-test_y = []
-for i in os.listdir("/Users/henry/Documents/sunsetFinder/Data/test/Non-Sunsets"):
-    if(i == ".DS_Store"):
-        continue
-
-    with open("/Users/henry/Documents/sunsetFinder/Data/test/Non-Sunsets" + "/" + i, "rb") as image2string:
-        converted_string = base64.b64encode(image2string.read())
-    X.append(converted_string)
-    Y.append("Non-Sunset")
-
-for i in os.listdir("/Users/henry/Documents/sunsetFinder/Data/test/Sunsets"):
-    if(i == ".DS_Store"):
-        continue
-    
-    with open("/Users/henry/Documents/sunsetFinder/Data/test/Sunsets" + "/" + i, "rb") as image2string:
-        converted_string = base64.b64encode(image2string.read())
-    X.append(converted_string)
-    Y.append("Sunset")
-
-
-convnet = input_data(shape=[None, 28, 28, 1], name='input')
-
-convnet = conv_2d(convnet, 32, 2, activation='relu')
-convnet = max_pool_2d(convnet, 2)
-
-convnet = conv_2d(convnet, 64, 2, activation='relu')
-convnet = max_pool_2d(convnet, 2)
-
-convnet = fully_connected(convnet, 1024, activation='relu')
-convnet = dropout(convnet, 0.8)
-
-convnet = fully_connected(convnet, 10, activation='softmax')
-convnet = regression(convnet, optimizer='adam', learning_rate=0.01, loss='categorical_crossentropy', name='targets')
-
-model = tflearn.DNN(convnet)
-model.fit({'input': X}, {'targets': Y}, n_epoch=10, validation_set=({'input': test_x}, {'targets': test_y}),
-          snapshot_step=500, show_metric=True, run_id='mnist')
-
-
-
+from ast import increment_lineno
+from cgi import test
+import time
 import numpy as np
-print("-------------------------")
-print(np.round(model.predict("/Users/henry/Documents/sunsetFinder/Data/test/Sunsets" + "/" + "20210206-1720.jpg")))
+import keras
+from keras import backend as K
+from keras.models import Sequential
+from keras.layers import Activation
+from keras.layers.core import Dense, Flatten
+from keras.optimizers import Adam
+from keras.metrics import categorical_crossentropy
+from keras.preprocessing.image import ImageDataGenerator
+from keras.layers.normalization import batch_normalization
+from keras.layers.convolutional import *
+import os
+from sklearn.metrics import confusion_matrix
+import itertools
+import shutil
+
+train_path =  "/Users/henry/Documents/sunsetFinder/Data/trainNew"
+test_path = "/Users/henry/Documents/sunsetFinder/Data/test" 
+validation_path = "/Users/henry/Documents/sunsetFinder/Data/valid"
+
+train_batches = ImageDataGenerator().flow_from_directory(train_path, target_size=(244,244), classes=['Sunsets','Non-Sunsets'], batch_size=10)
+test_batches = ImageDataGenerator().flow_from_directory(test_path, target_size=(244,244), classes=None, class_mode=None, batch_size=10)
+valid_batches = ImageDataGenerator().flow_from_directory(validation_path, target_size=(244,244), classes=['Sunsets','Non-Sunsets'], batch_size=4)
+
+model = Sequential([
+    Conv2D(32, (3,3), activation='relu', input_shape=(244,244,3)),
+    Flatten(),
+    Dense(2,activation='softmax'),
+    ]
+)
+
+model.compile(Adam(lr=.0001), loss='categorical_crossentropy',metrics=['accuracy'])
+
+model.fit_generator(train_batches, steps_per_epoch=4, validation_data=valid_batches,validation_steps=4, epochs=5,verbose=2)
+
+
+###Make Predictions
+import cv2
+from keras.preprocessing import image
+from keras.utils import img_to_array
+
+
+def classify_image(filepath):
+    img = cv2.imread(filepath)
+    img = cv2.resize(img, (244,244))
+    img = img_to_array(img)
+    img = np.expand_dims(img, axis=0)
+    img /= 255.
+    prediction = model.predict(img)[0]
+    return prediction
+    # if prediction[0] > prediction[1]:
+    #     return 1 # Image is a sunset
+    # else:
+    #     return 0 # Image is not a sunset
+
+###################################
+####This code generates a threshold
+###################################
+
+
+path = "/Users/henry/Documents/sunsetFinder/toSplit/"
+newPath = "/Users/henry/Documents/sunsetFinder/algoSays/"
+
+total = 0
+count = 0 
+for i in os.listdir(path):
+    if(i == ".DS_Store"):
+        continue
+
+    total += classify_image(path + i)[0]
+    count += 1
+
+avg = total/count
+
+print(total)
+print(count)
+print("Second Pass")
+
+for i in os.listdir(path):
+    if(i == ".DS_Store"):
+        continue
+
+    if(classify_image(path + i)[0] < avg / 5):
+        shutil.copyfile(path + i, newPath + i)
+        print("HIT")
+

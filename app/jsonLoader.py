@@ -58,4 +58,3 @@ def fillJson(displayFolderPath):
         date += 1
         update_json(file_to_base64(displayFolderPath + i),date)
 
-fillPicturesToDisplay()
