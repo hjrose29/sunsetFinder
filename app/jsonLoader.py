@@ -10,7 +10,7 @@ def clearJson():
         f.write("{\n\t\"test\": [\n\t]\n}")
 
 def getImages(jsonPath):
-    out = []
+    images = []
     f = open(jsonPath)
 
     data = json.load(f)
@@ -19,24 +19,55 @@ def getImages(jsonPath):
     second = []
     third = []
     fourth = []
+
+    dates = []
+    firstDate = []
+    secondDate = []
+    thirdDate = []
+    fourthDate = []
+
     for i in data["test"]:
         if(count % 4 == 0):
             fourth.append(i["image_name"])
-        
+            fourthDate.append(i["date_taken"])
         elif(count % 3 == 0):
             third.append(i["image_name"])
+            thirdDate.append(i["date_taken"])
         elif(count % 2 == 0):
-            
             second.append(i["image_name"])
+            secondDate.append(i["date_taken"])
         else:
             first.append(i["image_name"])
+            firstDate.append(i["date_taken"])
+    images.append(first)
+    images.append(second)
+    images.append(third)
+    images.append(fourth)
+
+    dates.append(firstDate)
+    dates.append(secondDate)
+    dates.append(thirdDate)
+    dates.append(fourthDate)
+
+    return images, dates
+
+    
+def imagesToObjects(images, dates):
+    out = []
+    first = []
+    second = []
+    third = []
+    fourth = []
+    for i in range(len(images) - 1):
+        for j in range(len(images[0]) - 1):
+            out.append(Image.__init__(images[i][j], dates[i][j]))
+
     out.append(first)
     out.append(second)
     out.append(third)
     out.append(fourth)
     return out
 
-    
 
 def getDates(jsonPath):
     out = []

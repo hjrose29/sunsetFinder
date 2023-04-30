@@ -15,7 +15,7 @@
   <body style="background-image: none;">
 
   <form method="post">
-    Date: <input name="Date"/>
+    Date(MM-DD-YYYY): <input name="Date"/>
     <br/><br/>
     <button type="submit">Submit</button>
   </form>
@@ -23,23 +23,31 @@
 
   <div class="row" textalign="center"> 
     <div class="column">
-      {% for i in c0 %}        
+      {% for (i, j )in c0%} 
           <img src="data:image/jpeg;base64,{{ i }}">
+          <b>{{j}}</b>
+          
       {% endfor %}
     </div>
     <div class="column">
-      {% for i in c1 %}        
+      {% for (i, j )in c1%}       
           <img src="data:image/jpeg;base64,{{ i }}">
+          <b>{{j}}</b>
+          
       {% endfor %}
     </div> 
     <div class="column">
-      {% for i in c2 %}        
-          <img src="data:image/jpeg;base64,{{ i }}">
+      {% for (i, j )in c2%}      
+           <img src="data:image/jpeg;base64,{{ i }}">
+           <b>{{j}}</b>
+
       {% endfor %}
     </div>
     <div class="column">
-      {% for i in c3 %}        
+      {% for (i, j)in c3%}     
           <img src="data:image/jpeg;base64,{{ i }}">
+          <b>{{j}}</b>
+          
       {% endfor %}
     </div>
   </div>

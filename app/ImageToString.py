@@ -53,10 +53,10 @@ def update_json(image_name, date):
 path = "/Users/henry/Documents/sunsetFinder/app/Data/Sunsets/"
 name = "20210206-1710.jpg"
 def toDisplayToJson(path, img_name):
-     year = name[0:4]
-     month = name[4:6]
-     day = name[6:8]
-     date = day + "/" + month + "/" + year
+     year = img_name[0:4]
+     month = img_name[4:6]
+     day = img_name[6:8]
+     date = month + "/" + day + "/" + year
      encoded = file_to_base64(path + img_name)
      return encoded, date
 
