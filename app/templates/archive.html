@@ -9,55 +9,81 @@
     rel= "stylesheet"
     type= "text/css" 
     href= "{{ url_for('static',filename='SunsetStyles.css') }}"
-   >
+    >
   </head>
 
   <body style="background-image: none;">
 
-  <form method="post">
-    Date: <input name="Date"/>
-    <br/><br/>
-    <button type="submit">Submit</button>
-  </form>
+    <form method="post">
+      Date: <input name="Date"/>
+      <br/><br/>
+      <button type="submit">Submit</button>
+    </form>
 
 
-  <div class="gallery" textalign="center"> 
-    <div class="column">
-      {% for i in c0 %}        
-          <img src="data:image/jpeg;base64,{{ i }}">
-      {% endfor %}
+    <div class="gallery" textalign="center"> 
+      <div class="column">
+        {% for i in c0 %}        
+            <img src="data:image/jpeg;base64,{{ i }}">
+        {% endfor %}
+      </div>
+      <div class="column">
+        {% for i in c1 %}        
+            <img src="data:image/jpeg;base64,{{ i }}">
+        {% endfor %}
+      </div> 
+      <div class="column">
+        {% for i in c2 %}        
+            <img src="data:image/jpeg;base64,{{ i }}">
+        {% endfor %}
+      </div>
+      <div class="column">
+        {% for i in c3 %}        
+            <img src="data:image/jpeg;base64,{{ i }}">
+        {% endfor %}
+      </div>
     </div>
-    <div class="column">
-      {% for i in c1 %}        
-          <img src="data:image/jpeg;base64,{{ i }}">
-      {% endfor %}
-    </div> 
-    <div class="column">
-      {% for i in c2 %}        
-          <img src="data:image/jpeg;base64,{{ i }}">
-      {% endfor %}
-    </div>
-    <div class="column">
-      {% for i in c3 %}        
-          <img src="data:image/jpeg;base64,{{ i }}">
-      {% endfor %}
-    </div>
-  </div>
-  
-      
+    
+        
     
 
       <!--Buttons-->
       
-  
-    <a href="index.html">
-      <button class="chiveButton">Live Stream</button>
-    </a>
-    
-    <a href="aboutUs.html">
-      <button class="boutusButton"> About Us</button>
-    </a> 
       
-    </body>
+        <a href="index.html">
+          <button class="chiveButton">Live Stream</button>
+        </a>
+          
+        <a href="aboutUs.html">
+          <button class="boutusButton"> About Us</button>
+        </a> 
+          
+      <script>
+        // get all images in the gallery
+        const images = document.querySelectorAll('.gallery img');
+        //change image source on click
+        const gallery = document.querySelector('.gallery');
+
+        //loop through each image and set its caption to the date part of the file name
+        images.forEach(img => {
+          const fileName = img.getAttribute('src').split('/').pop(); //get file name 
+          const datePart = fileName.substring(0, 8); //(YYYYMMDD)
+          img.insertAdjacentHTML('afterend', `<div class="caption">${datePart}</div>`);//caption
+        });
+        
+        //Makes image fullscreen when clicked on
+        gallery.addEventListener('click', e => {
+          if (e.target.tagName === 'IMG') {
+            const img = e.target;
+            const fullSrc = img.getAttribute('data-full');
+            img.setAttribute('src', fullSrc);
+            img.addEventListener('click', () => {
+              img.setAttribute('src', img.getAttribute('data-full'));
+            });
+          }
+        });
+      </script>
+
+  </body>
 </html>
   

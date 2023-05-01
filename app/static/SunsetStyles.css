@@ -22,17 +22,7 @@ body {
   text-shadow: 3px 3px 5px #e2837d;
 }
 
-iframe{
-  height: 250px;
-  width: 400px;
-  border:5px solid white;
-  
-}
-
-iframe:hover {
-  box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
-}
-
+/* Archive */
 .gallery {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
@@ -42,6 +32,11 @@ iframe:hover {
   height: 100vh;
   padding: 10px;
   box-sizing: border-box;
+}
+
+.gallery img {
+  border: 1px solid #fff;
+  cursor: pointer; 
 }
 
 
@@ -55,6 +50,19 @@ iframe:hover {
   margin-top: 8px;
   vertical-align: middle;
 }
+
+/* Main Page */
+iframe{
+  height: 250px;
+  width: 400px;
+  border:5px solid white;
+  
+}
+
+iframe:hover {
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
+}
+
 .videos {
   display:flex;
   justify-content:center;
