@@ -13,12 +13,31 @@
   </head>
 
   <body style="background-image: none;">
+  <head>
+    <title>Sunset Archive</title>
+    <meta charset="UTF-8">
+    <meta name="author" content="Sunset Finder Team">
+    <meta name="description" content="Archive which holds sunsets">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link
+    rel= "stylesheet"
+    type= "text/css" 
+    href= "{{ url_for('static',filename='SunsetStyles.css') }}"
+   >
+  </head>
+
+  <body style="background-image: none;">
 
     <form method="post">
       Date: <input name="Date"/>
       <br/><br/>
       <button type="submit">Submit</button>
     </form>
+  <form method="post">
+    Date(MM-DD-YYYY): <input name="Date"/>
+    <br/><br/>
+    <button type="submit">Submit</button>
+  </form>
 
 
     <div class="gallery" textalign="center"> 

@@ -24,13 +24,13 @@ def file_to_base64(file_path):
 
 
 
-def update_json(image_name):
+def update_json(image_name, date):
     # Load the JSON file
     with open("/Users/henry/Documents/sunsetFinder/app/archive.json", 'r') as f:
         data = json.load(f)
 
     # Parse the date string into a datetime object
-    date_taken = 123
+    date_taken = date
 
     # Create a new object with the image name and date
     new_object = {'image_name': image_name, 'date_taken': date_taken}
@@ -48,3 +48,16 @@ def update_json(image_name):
 
 #for i in os.listdir("/Users/henry/Documents/sunsetFinder/Data/Sunsets/Thumbnails"):
  #   update_json(file_to_base64("/Users/henry/Documents/sunsetFinder/Data/Sunsets/Thumbnails/" + i))
+
+
+path = "/Users/henry/Documents/sunsetFinder/app/Data/Sunsets/"
+name = "20210206-1710.jpg"
+def toDisplayToJson(path, img_name):
+     year = img_name[0:4]
+     month = img_name[4:6]
+     day = img_name[6:8]
+     date = month + "/" + day + "/" + year
+     encoded = file_to_base64(path + img_name)
+     return encoded, date
+
+        
