@@ -1,6 +1,5 @@
 Welcome to the Sunset Finder github!
 
-Find our working product [here](https://hjrose29.github.io/sunsetFinder/SunsetFinder/)!
 
 Below please find some important links:
 
