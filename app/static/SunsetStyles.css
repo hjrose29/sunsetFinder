@@ -6,7 +6,7 @@ body {
     background-size: cover;
 }
 
-/* centers and stylizes heading */
+/* centers and stylizes headings */
 .headWords {
     text-align: right;
     color: #e2837d;
@@ -22,17 +22,7 @@ body {
   text-shadow: 3px 3px 5px #e2837d;
 }
 
-iframe{
-  height: 250px;
-  width: 400px;
-  border:5px solid white;
-  
-}
-
-iframe:hover {
-  box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
-}
-
+/* Gallery on archive page */
 .gallery {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
@@ -44,6 +34,10 @@ iframe:hover {
   box-sizing: border-box;
 }
 
+.gallery img {
+  border: 1px solid #fff;
+  cursor: pointer; 
+}
 
 /* Create two equal columns that sits next to each other */
 .column {
@@ -55,6 +49,8 @@ iframe:hover {
   margin-top: 8px;
   vertical-align: middle;
 }
+
+/* Videos on main page*/
 .videos {
   display:flex;
   justify-content:center;
@@ -62,8 +58,8 @@ iframe:hover {
   list-style:none;
   margin:0;
   padding:0;
-  
 }
+
 .videos li {
   margin:8px;
   display:flex;
@@ -72,8 +68,17 @@ iframe:hover {
   color: white;
 }
 
-/* centers an element within its container */
+iframe{
+  height: 250px;
+  width: 400px;
+  border:5px solid white;
+}
 
+iframe:hover {
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
+}
+
+/* Buttons */
 .chiveButton{
   position: fixed;
   top: 10px;
