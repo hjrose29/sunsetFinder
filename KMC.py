@@ -2,21 +2,23 @@ from keras.applications.inception_v3 import InceptionV3
 from keras.applications.inception_v3 import preprocess_input
 import keras.utils as image
 from keras.utils import img_to_array
-import sklearn
+from sklearn.cluster import KMeans
 import pandas as pd
 import numpy as np
 from tqdm import tqdm
 import os
 import shutil
 
-
+path = "/Users/henry/Documents/sunsetFinder/toSplit/"
 # Function to Extract features from the images
 def image_feature(direc):
     model = InceptionV3(weights='imagenet', include_top=False)
     features = []
     img_name = []
-    for i in tqdm(direc):
-        fname = 'TestPictures' + '/' + i
+    for i in tqdm(os.listdir(direc)):
+        if(i == ".DS_Store"):
+            continue
+        fname = path + i
         img = image.load_img(fname, target_size=(224, 224))
         x = img_to_array(img)
         x = np.expand_dims(x, axis=0)
@@ -28,8 +30,8 @@ def image_feature(direc):
     return features, img_name
 
 
-img_path = os.listdir('TestPictures')
-img_features, img_name = image_feature(img_path)
+
+img_features, img_name = image_feature(path)
 
 
 # Creating Clusters
@@ -45,6 +47,6 @@ os.mkdir('sunset')
 os.mkdir('not_sunset')
 for i in range(len(image_cluster)):
     if image_cluster['clusterid'][i] == 0:
-        shutil.move(os.path.join('TestPictures', image_cluster['image'][i]), 'sunset')
+        shutil.move(os.path.join(path, image_cluster['image'][i]), 'sunset')
     else:
-        shutil.move(os.path.join('TestPictures', image_cluster['image'][i]), 'not_sunset')
+        shutil.move(os.path.join(path, image_cluster['image'][i]), 'not_sunset')

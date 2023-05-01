@@ -36,7 +36,7 @@ def archive():
         formatted_date = year + "-" + month + "-" + day
         print(formatted_date)
         images = search(formatted_date, "archive.json")
-        count = 1
+        count = 0
         img0 = []
         img1 = []
         img2 = []
@@ -49,13 +49,13 @@ def archive():
         if (images == None):
             return render_template('archive.html', c0=zip(images[0], dates[0]), c1=zip(images[1], dates[1]), c2=zip(images[2], dates[2]), c3=zip(images[3], dates[3]))
         while count < len(images):
-            if(count % 4 != 0):
+            if(count + 1 % 4 != 0):
                 img3.append(images[count]["image_name"])
                 date3.append(images[count]["date_taken"])
-            elif(count % 3 != 0):
+            elif(count + 1 % 3 != 0):
                 img2.append(images[count]["image_name"])
                 date2.append(images[count]["date_taken"])
-            elif(count % 2 != 0):
+            elif(count + 1 % 2 != 0):
                 img1.append(images[count]["image_name"])
                 date1.append(images[count]["date_taken"])
             else:

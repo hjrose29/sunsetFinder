@@ -33,7 +33,7 @@ def search(date, jsonPath):
         return matches
     elif closest_date is not None:
         closest_date = closest_date.strftime('%Y-%m-%d')
-        return search(closest_date)  # search again on the closest date found
+        return search(closest_date, jsonPath)  # search again on the closest date found
     else:
         return None
 
