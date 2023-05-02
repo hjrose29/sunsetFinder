@@ -22,8 +22,9 @@ body {
   text-shadow: 3px 3px 5px #e2837d;
 }
 
-/* Archive */
+/* Archive Gallery */
 .gallery {
+
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -34,7 +35,9 @@ body {
   box-sizing: border-box;
 }
 
+
 .gallery img {
+  
   border: 1px solid #fff;
   cursor: pointer;
   margin: 10px;
@@ -42,7 +45,7 @@ body {
 }
 
 
-/* Main Page */
+/* Live Stream Page */
 iframe{
   height: 250px;
   width: 400px;
@@ -71,8 +74,7 @@ iframe:hover {
   color: white;
 }
 
-
-/* centers an element within its container */
+/* Buttons */
 
 .chiveButton{
   position: fixed;
