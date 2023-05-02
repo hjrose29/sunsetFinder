@@ -1,6 +1,5 @@
 from ast import increment_lineno
 from cgi import test
-from termios import TIOCPKT_FLUSHWRITE
 import time
 import numpy as np
 import keras
@@ -65,7 +64,6 @@ def classify_image(filepath):
     img = np.array(img)
     hue = extract_dominant_hue(filepath) # Extract dominant hue
     img = np.concatenate([img, hue], axis=-1) # Concatenate image and hue
-    img = np.expand_dims(img, axis=0)
     img /= 255.
     fp = io.BytesIO()
     np.save(fp, img)

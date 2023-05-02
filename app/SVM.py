@@ -55,4 +55,3 @@ y_pred = model.predict(X_test)
 # Print the classification report and confusion matrix
 print("Classification Report:\n", classification_report(y_test, y_pred))
 print("Confusion Matrix:\n", confusion_matrix(y_test, y_pred))
-1

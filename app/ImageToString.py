@@ -3,7 +3,8 @@ import base64
 from io import BytesIO
 import os
 import json, datetime
-
+import cv2
+import numpy
 file_path = "/Users/henry/Documents/sunsetFinder/Data/train/Sunsets/20210221-1730.jpg"
 
 def resizeImage(path, oldName, newName):
@@ -15,6 +16,12 @@ def resizeImage(path, oldName, newName):
     image = Image.open(old_path)
     image.thumbnail((250, 250))
     image.save(new_path)
+    return numpy.array(image) 
+
+def resize(path):
+    image = Image.open(path)
+    image.thumbnail((250, 250))
+    return numpy.array(image) 
 
 def file_to_base64(file_path):
     with open(file_path, 'rb') as file:
