@@ -17,6 +17,8 @@ def index():
 def archive():
     toDisplay = "/Users/henry/Documents/sunsetFinder/toDisplay/"
     for i in os.listdir(toDisplay):
+        if(i == ".DS_Store"):
+            continue
         resizeImage(toDisplay, i, i)
         encoded, date = toDisplayToJson(toDisplay, i)
         update_json(encoded, date)
